@@ -3,49 +3,48 @@ machineLearningCondition = Math.floor(Math.random() * 2) ? 'transparent' : 'cont
 experienceNode = null;
 var began = new Date();
 var surveyJSON = { title: "", 
-  surveyPostId: '516ed990-1ffe-4157-9f38-4ebabda5fe33',
+  surveyPostId: 'aa3ef00a-75a4-40ba-8614-4a2d6f304693',    //NEED TO CHANGE this
   showProgressBar: 'bottom',
   pages: [
-    { name:"page1", questions: [ 
-      { type: "html", name: "experiences", title:"experience", html:'<div id="expquestion"><center><h5>Please write at least 100 words about an emotional experience that affected you in the last week.</h5></center><center><span id="wordcount">0/100 words</span></center><div id="text" contenteditable class="textarea form-control"></div></div>', isRequired: true }
-               ]},
-      { name: "page2", questions: [
-            { type: "matrix", name: "accuracies", title: "Please choose the answer that best reflects your thinking.", columns: [{ value: 1, text: "Strongly Negative"}, { value: 2, text: "Negative"}, { value: 3, text: "Slightly Negative"}, { value: 4, text: "Neutral"}, { value: 5, text: "Slightly Positive"}, { value: 6, text: "Positive"}, { value: 7, text: "Strongly Positive"}], rows: [{value: 'yourRating', text: "How positive or negative did you feel your writing was?"}, {value: 'eRating', text: "How positive or negative did the e-meter assess your writing to be?"}], isRequired: true },
-            //to what extent do you trust the system and why (quant and qualitative)
-       ] },
-        { name: "page3",questions: [
-            { type: "matrix", name: "assessedAccuracy", title: "Please choose the answer that best reflects your thinking.", columns: [{ value: 1, text: "Very Inaccurate"}, { value: 2, text: "Inaccurate"}, { value: 3, text: "Slightly Inaccurate"}, { value: 4, text: "Neither Accurate Nor Inaccurate"}, { value: 5, text: "Slightly Accurate"}, { value: 6, text: "Accurate"}, { value: 7, text: "Very Accurate"}], rows: [{value: 'eRating', text: "How accurate was the E-meter in its assessment of your writing?"}, {value: 'futureAccuracy', text: "If you were to use the system again how accurate do you think it would be?"}], isRequired: true },
-          ] },
-//make sure people can't look back on questions to frame current answers
-        { name: "page4",questions: [
-              { type: "comment", name: "accuracyReasons", title: "Please give 2 reasons for your evaluations of the E-meter's accuracy. Why did you think it was inaccurate or accurate?", isRequired: true }
-            ]},
-        { name: "page5",questions: [
-            { type: "matrix", name: "systemTrust", title: "Please choose the answer that best reflects your thinking.", columns: [{ value: 1, text: "Not at all"}, { value: 2, text: "Slightly"}, { value: 3, text: "Moderately"}, { value: 4, text: "Very"}, { value: 5, text: "Extremely"}, ], rows: [{value: 'trustRating', text: "How trustworthy did you find the E-meter system?"}], isRequired: true },
-              { type: "comment", name: "trustReasons", title: "Please explain why you chose your indicated level of trust.", isRequired: true }
-          ] },
-        { name: "page6", questions: [
-              { type: "comment", name: "like", title: "Please name 2 or more things you liked about the system.", isRequired: true }, //up for grabs (reevaluate feedback from question) (what did this system do for you?) (did this change how you thought about yourself)
-              { type: "comment", name: "dislike", title: "Please name 2 or more things you disliked about the system.", isRequired: true }, // up for grabs (reevaluate feedback from question)
-            ]}, 
-        { name: "page7", questions: [
-              { type: "comment", name: "feedbackEffects", title: "Please give 2-3 ways the feedback from the algorithm affected your writing.", isRequired: true }, 
-          ] },
+    
+      { name: "page1", questions: [
+            { type: "matrix", name: "communicationEffectiveness", title: "Please choose the answer that best reflects your thinking.", columns: [{ value: 1, text: "Never effective"}, { value: 2, text: "Rarely effective"}, { value: 3, text: "Somewhat effective"}, { value: 4, text: "Usually effective"}, { value: 5, text: "Always effective"}], rows: [{value: 'generalEffectiveScore', text: "How effective do you believe you are at communicating?"}], isRequired: true },
             
-          { name: "page8", questions: [
-              { type: "comment", name: "tips", title: "Imagine that you were given personalized tips on how to improve you mood based on what you wrote. Would you make use of such suggestions?", isRequired: true },  //imagine you were given personalized tips to improve your mood 
-          ] },
-          { name: "page9", questions: [
-              { type: "comment", name: "folkTheory", title: "Please explain how do you think the system judges your writing.", isRequired: true }, 
-              { type: "comment", name: "testing", title: "Did you experiment with or manipulate your writing to test how the system was working or how accurate it was? If so, how?", isRequired: true }, //rephrase this (did you experiment/manipulate your writing to test how the system was working and how accurate it was. explain--
-        ] },
-          { name: "page10", questions: [
-              { type: "comment", name: "generalReactions", title: "If you have any additional feedback from your interaction with the E-meter, please detail it here.", isRequired: true }, //put on own page/get rid of.
-          ] },
-          { name: "page11", questions: [
-          //add debrief  (
-              { type: "html", name: "confirmationCode", html: "<h3>Confirmation Code: " + confirmationCode + "</h3><p>Please copy and paste this into the Mechanical Turk survey code field</p>"},
-          ] }
+       ] },
+       { name: "page2", questions: [
+        { type: "matrix", name: "generalWritingEffectiveness", title: "Please choose the answers that best reflect your thinking.", columns: [{ value: 1, text: "Not at all skilled"}, { value: 2, text: "Barely skilled"}, { value: 3, text: "Somewhat skilled"}, { value: 4, text: "Mostly skilled"}, { value: 5, text: "Highly skilled"}], rows: [{value: 'generalWritingSelfAssessment', text: "How skilled do you believe you are at writing in general?"}, {value: 'formalWritingSelfAssessment', text: "How skilled do you believe you are at formal writing in particular?"}], isRequired: true },
+        
+   ] },
+    { name: "page3", questions: [
+      { type: "matrix", name: "formalWritingEffectiveness", title: "Please choose the answers that best reflect your thinking.", columns: [{ value: 1, text: "Much worse"}, { value: 2, text: "Somewhat worse"}, { value: 3, text: "Generally the same"}, { value: 4, text: "Somewhat better"}, { value: 5, text: "Much better"}], rows: [{value: 'comparisonWritingScore', text: "How do you think your general writing skills compare to others of the same amount of education?"}, {value: 'formalWritingScore', text: "How do you think your formal writing skills compare to others of the same amount of education?"}], isRequired: true },
+  
+    ] },
+    { name: "page4", questions: [
+      { type: "matrix", name: "valueAssessmentOfWritingSystem", title: "Please choose the answer that best reflects your thinking.", columns: [{ value: 1, text: "Not at all valuable"}, { value: 2, text: "A little valuable"}, { value: 3, text: "Somewhat valuable"}, { value: 4, text: "Mostly valuable"}, { value: 5, text: "Highly valuable"}], rows: [{value: 'generalEffectiveScore', text: "How valuable do you think a system that assesses your writing skills would be to you?"}], isRequired: true },
+      
+    ] },
+
+    { name:"page5", questions: [ 
+        { type: "html", name: "writingPrompt", title:"experience", html:'<div id="writingPrompt"><center><h5>Instructions: You are applying for a high-paying job as a seasonal girl scout cookie taste tester.  The qualifications for the job include excellent communication skills, good work ethic, and dedication to the craft.  Please write a formal email to a hiring manager of this company and explain why you are most qualified for this position. </h5></center><center><span id="wordcount">0/100 words</span></center><div id="text" contenteditable class="textarea form-control"></div></div>', isRequired: true }
+                 ]},
+ 
+        { name: "page6", questions: [
+          { type: "html", name: "finalAssessmentStatement", title:"experience", html:'<div><center><h4> Based on the writing sample provided, the system has determined that your writing is equivalent to someone who has had </h4><h2 id="finalNewValScore"> </h2> <h4> years of formal education.</h4></center></div>', isRequired: true },
+          { type: "matrix", name: "writingSelfAssessment", title: "Please choose the answers that best reflects your thinking.", columns: [{ value: 1, text: "Not at all skilled"}, { value: 2, text: "Barely skilled"}, { value: 3, text: "Somewhat skilled"}, { value: 4, text: "Mostly skilled"}, { value: 5, text: "Highly skilled"}], rows: [{value: 'systemWritingAssessment', text: "How skilled did the system evaluate you as a writer?"}, {value: 'writingQualitySelfAssessment', text: "How skilled would you believe this example of your writing is?"}], isRequired: true } 
+          ]},
+
+          { name: "page7", questions: [
+                  { type: "comment", name: "generalPostSystemWritingChange", title: "Did the system's evaluation affect how you think of your writing skills in general? Why or why not?", isRequired: true }, // up for grabs (reevaluate feedback from question)
+                ]}, 
+            
+                { name: "page8", questions: [
+                  { type: "matrix", name: "systemAccuracyAssessment", title: "Please choose the answers that best reflect your thinking.", columns: [{ value: 1, text: "Not at all accurate"}, { value: 2, text: "Barely accurate"}, { value: 3, text: "Somewhat accurate"}, { value: 4, text: "Rather accurate"}, { value: 5, text: "Very accurate"}], rows: [{value: 'systemSelfAsses', text: "How accurate do you think the system is at assessing your writing?"},], isRequired: true },
+                      { type: "comment", name: "systemAccuracyFreeResponse", title: "Why?  What factors contributed to your assessment?", isRequired: true }, // up for grabs (reevaluate feedback from question)
+                    ]},
+                    { name: "page9", questions: [
+                      { type: "matrix", name: "systemTrustAssessment", title: "Please choose the answers that best reflect your thinking.", columns: [{ value: 1, text: "Not at all trustworthy"}, { value: 2, text: "Barely trustworthy"}, { value: 3, text: "Somewhat trusthworthy"}, { value: 4, text: "Rather trustworthy"}, { value: 5, text: "Very trustworthy"}], rows: [{value: 'systemSelfAsses', text: "How much do you trust the system’s ability to grade your writing accurately?"},], isRequired: true },
+                          { type: "comment", name: "howDoesSystemWork", title: "How do you think the system works?", isRequired: false }, // up for grabs (reevaluate feedback from question)
+                        ]},
      ]
 };
 
@@ -60,14 +59,18 @@ survey.setValue('transparency', machineLearningCondition)
 function sendDataToServer(survey) {
   survey.setValue('timeElapsed', new Date() - began);
   //You should get the Guid for storing survey data in dxSurvey.com
-  survey.sendResult('70ad9ad7-5266-48af-a28a-05b978363cf6');
+  survey.sendResult('aa3ef00a-75a4-40ba-8614-4a2d6f304693');
 }
 
 survey.onCurrentPageChanged.add(function (sender, options) {
-  if (survey.currentPage.visibleIndex == 0) {
+  if (survey.currentPage.visibleIndex == 4) {
     document.querySelector('#textAndMeter').style.display = '';
-    $('#expquestion').replaceWith(experienceNode);
-  } else {
+    //console.log(experienceNode);
+    //$('#expquestion').replaceWith(experienceNode);
+  } else if(survey.currentPage.visibleIndex == 5) {
+    document.querySelector('#textAndMeter').style.display = 'none';
+    $("#finalNewValScore").text(newVal.toFixed(2));
+  } else{
     document.querySelector('#textAndMeter').style.display = 'none';
   }
 });
@@ -76,19 +79,20 @@ var chart = c3.generate({
     bindto: "#emeter",
     data: {
         columns: [
-            ['Positivity', 63.333]
+            ['Writing Grade Level', 10.00]
         ],
         type: 'gauge',
     },
     gauge: {
         label: {
             format: function(value, ratio) {
-                return '';
+              //console.log(value);  
+              return value.toFixed(2);
             },
             show: false // to turn off the min/max labels.
         },
-//    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-//    max: 100, // 100 is default
+    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
+    max: 16, // 100 is default
 //    units: ' %',
 //    width: 39 // for adjusting arc thickness
     },
@@ -97,7 +101,7 @@ var chart = c3.generate({
         threshold: {
 //            unit: 'value', // percentage is default
 //            max: 200, // 100 is default
-            values: [15, 35, 50, 75]
+            values: [6, 8, 10, 15]
         }
     },
     size: {
@@ -143,25 +147,22 @@ function SetCaretPosition(el, pos){
 var lastWord = '',
     timerOn = false;
 document.body.onkeyup = function(e) {
-  if (survey.currentPage.visibleIndex == 0) {
+  if (survey.currentPage.visibleIndex == 4) {
     if (e.keyCode == 32 || e.keyCode == 8 || e.keyCode == 13) {
       var words = $('#text').text().split(/\s/);
-      $('#wordcount').text(words.length + '/100 words');
+      $('#wordcount').text(words.length-1 + '/100 words');
       //Interested in algorithm UX? Shoot me an email alspring(at)ucsc(dot)edu
         var written_text = $('#text').text(),
-        newVal = predict_all(written_text),
-        pos = $('#text').caret('pos'),
-        word_colors = make_words_colors_dict(written_text);
-        if (machineLearningCondition === 'transparent') {
-          for (var key in word_colors) {
-            written_text = written_text.replace(new RegExp('\\b' + key + '\\b', 'gi'),
-              function (match) {
-                return '<span style="background-color: ' + word_colors[key] + ';">' + match + '</span>';
-            });
-          }
-          $('#text').html(written_text);
-          $('#text').caret('pos', pos);
+        wordCount = words.length,
+        fkGrade = grade(written_text);
+        if(wordCount < 50){
+          newVal = (wordCount * fkGrade / 50) + ((50-wordCount) * 12 / 50);
         }
+        else{
+          newVal = fkGrade;
+        }
+
+        
         //restore();
         /*if (newVal > 100) {
           newVal = 100;
@@ -170,8 +171,9 @@ document.body.onkeyup = function(e) {
         }*/
         experienceNode = $('#expquestion');
         survey.setValue('finalEmeterValue', newVal);
+        survey.setValue('eWriterText', written_text);
         chart.load({
-              columns: [['Positivity', newVal]]
+              columns: [['Writing Grade Level', newVal]]
         });
       //}
    }
@@ -181,9 +183,9 @@ document.body.onkeyup = function(e) {
 $(document).ready(function() {
   experienceNode = $('#expquestion');
   if(machineLearningCondition === 'transparent') {
-    $('#explanation').text('The graphic above displays the output from an algorithm that assesses the positivity/negativity of your writing as you answer the question below. Individual words you type will be highlighted according to whether they contribute towards a positive mood direction or negative mood direction.');
+    $('#explanation').text('The graphic above displays the output from an algorithm that assesses the quality of your writing in terms of number of years of formal education.');
   } else {
-    $('#explanation').text('The graphic above displays the output from an algorithm that assesses the positivity/negativity of your writing as you answer the question below.');
+    $('#explanation').text('The graphic above displays the output from an algorithm that assesses the quality of your writing as you answer the question below.');
   }
   /*$('#btn-explain').click(function (e) {
     $('#explanation').append('blahblahtext');
