@@ -29,6 +29,7 @@ var surveyJSON = { title: "",
       {type: "radiogroup", name: "formalWritingSelfAssessment", title: "How skilled or unskilled do you believe you are at formal writing in particular?", choices:[{value: 1, text: "Very Unskilled"},{value: 2, text: "Unskilled"},{value: 3, text: "Slightly Unskilled"},{value: 4, text: "Neither Skilled Nor Unskilled"},{value: 5, text: "Slightly Skilled"},{value: 6, text: "Skilled"},{value: 7, text: "Very Skilled"}],isRequired: true},
     ]},  
     { name: "page3", questions: [
+      { type: "comment", name: "actualAmountOfEducation", title: "How many years of formal education have you had?", width: 1, rows: 1, isRequired: true },
       {type: "radiogroup", name: "comparisonWritingScore", title: "How do you think your general writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
       {type: "radiogroup", name: "comparisonFormalWritingScore", title: "How do you think your formal writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
     ]},  
@@ -44,20 +45,23 @@ var surveyJSON = { title: "",
       {type: "radiogroup", name: "writingSelfAssessmentComp", title: "Did the system grade you better or worse than you were expecting?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
     ]}, 
     { name: "page7", questions: [
-      { type: "comment", name: "generalPostSystemWritingChange", title: "Did the system's evaluation affect how you think of your writing skills in general? Why or why not?", isRequired: true },
       {type: "radiogroup", name: "postComparisonWritingScore", title: "How do you think your general writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
       {type: "radiogroup", name: "postComparisonFormalWritingScore", title: "How do you think your formal writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
     ]},
     { name: "page8", questions: [
+      { type: "comment", name: "generalPostSystemWritingChange", title: "Did the system's evaluation affect how you think of your writing skills in general? Why or why not?", isRequired: true },
+    ]},
+    { name: "page9", questions: [
       {type: "radiogroup", name: "systemAccuracyAssessment", title: "How accurate or innacurate do you think the system is at assessing your writing?", choices:[{value: 1, text: "Very Inaccurate"},{value: 2, text: "Inaccurate"},{value: 3, text: "Slightly Inaccurate"},{value: 4, text: "Neither Innacurate Nor Innacruate"},{value: 5, text: "Slightly Accurate"},{value: 6, text: "Accurate"},{value: 7, text: "Very Accurate"}],isRequired: true},
       { type: "comment", name: "systemAccuracyFreeResponse", title: "Why?  Please list at least two factors that contributed to your assessment.", isRequired: true },
     ]},
-    { name: "page9", questions: [
-      {type: "radiogroup", name: "systemTrustAssessment", title: "In your opinion, how trustworthy or untrustworthy is the system’s ability to grade your writing accurately?", choices:[{value: 1, text: "Very Untrustworthy"},{value: 2, text: "Untrustworthy"},{value: 3, text: "Slightly Untrustworthy"},{value: 4, text: "Neither Trustworthy Nor Untrustworthy"},{value: 5, text: "Slightly Trustworthy"},{value: 6, text: "Trustworthy"},{value: 7, text: "Very Trustworthy"}],isRequired: true},
+    
+    { name: "page10", questions: [
+      {type: "radiogroup", name: "systemTrustAssessment", title: "In your opinion, how trustworthy or untrustworthy did you find the system?", choices:[{value: 1, text: "Very Untrustworthy"},{value: 2, text: "Untrustworthy"},{value: 3, text: "Slightly Untrustworthy"},{value: 4, text: "Neither Trustworthy Nor Untrustworthy"},{value: 5, text: "Slightly Trustworthy"},{value: 6, text: "Trustworthy"},{value: 7, text: "Very Trustworthy"}],isRequired: true},
       { type: "comment", name: "howDoesSystemWork", title: "How do you think the system works?", isRequired: false }, // up for grabs (reevaluate feedback from question)
     ]},
-    { name:"page10", questions: [ 
-      { type: "html", name: "finalCode", title:"finalCode", html:'<div id="finalCode"><center><h4>You have completed the survey.  Please copy and paste this code into Amazon Turk to receive credit: ' + confirmationCode + '</h4>', isRequired: true }
+    { name:"page11", questions: [ 
+      { type: "html", name: "finalCode", title:"finalCode", html:'<div id="finalCode"><center><h4>You are about to complete the survey.  Please copy and paste this code into Amazon Turk to receive credit: ' + confirmationCode + '</h4>', isRequired: true }
     ]},
      ]
 };
