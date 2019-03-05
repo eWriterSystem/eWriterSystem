@@ -1,4 +1,4 @@
-var confirmationCode = 'easy' + Math.floor(Math.random() * 1000000),
+var confirmationCode = 'sunset' + Math.floor(Math.random() * 1000000),
   machineLearningCondition = Math.floor(Math.random() * 2) ? 'transparent' : 'control',
   legend = '<div class="col-md-3"><h3>Legend:</h3><br><span style="background-color:rgba(255, 0, 0, 0.5);">Very Negative</span><br><span style="background-color:rgba(249, 118, 0, 0.5);">Negative</span><br><span style="background-color:rgba(246, 198, 0, 0.5);">Slightly Negative</span><br><span style="background-color:rgba(96, 176, 68, 0.5);">Positive</span><br><span style="background-color:rgba(61, 110, 43, 0.5);">Very Positive</span><br><span>Unimportant</span></div>'
   experienceNode = null;
@@ -18,51 +18,47 @@ var emeterValues = {'emeter1': 66.66, 'emeter2': 66.66};
 
 
 var surveyJSON = { title: "", 
-  surveyPostId: 'aa3ef00a-75a4-40ba-8614-4a2d6f304693',    //NEED TO CHANGE this
+  surveyPostId: 'aa3ef00a-75a4-40ba-8614-4a2d6f304693',
   showProgressBar: 'bottom',
   pages: [
-    
-      { name: "page1", questions: [
-            { type: "matrix", name: "communicationEffectiveness", title: "Please choose the answer that best reflects your thinking.", columns: [{ value: 1, text: "Not very effective"}, { value: 2, text: "Slightly effective"}, { value: 3, text: "Moderately effective"}, { value: 4, text: "Very effective"}, { value: 5, text: "Extremely effective"}], rows: [{value: 'generalEffectiveScore', text: "How effective do you believe you are at communicating?"}], isRequired: true },
-            
-       ] },
-       { name: "page2", questions: [
-        { type: "matrix", name: "generalWritingEffectiveness", title: "Please choose the answers that best reflect your thinking.", columns: [{ value: 1, text: "Not at all skilled"}, { value: 2, text: "Barely skilled"}, { value: 3, text: "Somewhat skilled"}, { value: 4, text: "Mostly skilled"}, { value: 5, text: "Highly skilled"}], rows: [{value: 'generalWritingSelfAssessment', text: "How skilled do you believe you are at writing?"}, {value: 'formalWritingSelfAssessment', text: "How skilled do you believe you are at formal writing in particular?"}], isRequired: true },
-        
-   ] },
+    { name: "page1", questions: [
+      {type: "radiogroup", name: "communicationEffectiveness", title: "How effective do you believe you are at communicating?", choices:[{value: 1, text: "Very Ineffective"},{value: 2, text: "Ineffective"},{value: 3, text: "Slightly Ineffective"},{value: 4, text: "Neither Innefective Nor Effective"},{value: 5, text: "Slightly Effective"},{value: 6, text: "Effective"},{value: 7, text: "Very Effective"}],isRequired: true},
+    ]},
+    { name: "page2", questions: [
+      {type: "radiogroup", name: "generalWritingSelfAssessment", title: "How skilled or unskilled do you believe you are at writing?", choices:[{value: 1, text: "Very Unskilled"},{value: 2, text: "Unskilled"},{value: 3, text: "Slightly Unskilled"},{value: 4, text: "Neither Skilled Nor Unskilled"},{value: 5, text: "Slightly Skilled"},{value: 6, text: "Skilled"},{value: 7, text: "Very Skilled"}],isRequired: true},
+      {type: "radiogroup", name: "formalWritingSelfAssessment", title: "How skilled or unskilled do you believe you are at formal writing in particular?", choices:[{value: 1, text: "Very Unskilled"},{value: 2, text: "Unskilled"},{value: 3, text: "Slightly Unskilled"},{value: 4, text: "Neither Skilled Nor Unskilled"},{value: 5, text: "Slightly Skilled"},{value: 6, text: "Skilled"},{value: 7, text: "Very Skilled"}],isRequired: true},
+    ]},  
     { name: "page3", questions: [
-      { type: "matrix", name: "formalWritingEffectiveness", title: "Please choose the answers that best reflect your thinking.", columns: [{ value: 1, text: "Much worse"}, { value: 2, text: "Somewhat worse"}, { value: 3, text: "Generally the same"}, { value: 4, text: "Somewhat better"}, { value: 5, text: "Much better"}], rows: [{value: 'comparisonWritingScore', text: "How do you think your general writing skills compare to people with the same amount of education?"}, {value: 'formalWritingScore', text: "How do you think your formal writing skills compare to people with the same amount of education?"}], isRequired: true },
-  
-    ] },
+      {type: "radiogroup", name: "comparisonWritingScore", title: "How do you think your general writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
+      {type: "radiogroup", name: "comparisonFormalWritingScore", title: "How do you think your formal writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
+    ]},  
     { name: "page4", questions: [
-      { type: "matrix", name: "valueAssessmentOfWritingSystem", title: "Please choose the answer that best reflects your thinking.", columns: [{ value: 1, text: "Not at all valuable"}, { value: 2, text: "A little valuable"}, { value: 3, text: "Somewhat valuable"}, { value: 4, text: "Mostly valuable"}, { value: 5, text: "Highly valuable"}], rows: [{value: 'generalEffectiveScore', text: "How valuable do you think a system that assesses your writing skills would be to you?"}], isRequired: true },
-      
-    ] },
-
+      {type: "radiogroup", name: "valueAssessmentOfWritingSystem", title: "How valuable do you think a system that assesses your writing skills would be to you?", choices:[{value: 1, text: "Not At All Valuable"},{value: 2, text: "A Little Valuable"},{value: 3, text: "Somewhat Valuable"},{value: 4, text: "Mostly Valuable"},{value: 5, text: "Highly Valuable"}],isRequired: true},
+    ]},
     { name:"page5", questions: [ 
         { type: "html", name: "writingPrompt", title:"experience", html:'<div id="writingPrompt"><center><h5>Instructions: You are applying for a high-paying job as a seasonal girl scout cookie taste tester.  The qualifications for the job include excellent communication skills, good work ethic, and dedication to the craft.  Please write a formal email to a hiring manager of this company and explain why you are most qualified for this position. </h5></center><center><span id="wordcount">0/100 words</span></center><div id="text" contenteditable class="textarea form-control"></div></div>', isRequired: true }
-                 ]},
- 
-        { name: "page6", questions: [
-          { type: "html", name: "finalAssessmentStatement", title:"experience", html:'<div><center><h4> Based on the writing sample provided, the system has determined that your writing is equivalent to someone who has had </h4><h2 id="finalNewValScore"> </h2> <h4> years of formal education.</h4></center></div>', isRequired: true },
-          { type: "matrix", name: "writingSelfAssessment", title: "Please choose the answers that best reflects your thinking.", columns: [{ value: 1, text: "Not at all skilled"}, { value: 2, text: "Barely skilled"}, { value: 3, text: "Somewhat skilled"}, { value: 4, text: "Mostly skilled"}, { value: 5, text: "Highly skilled"}], rows: [{value: 'writingQualitySelfAssessment', text: "Compared to how you write normally, how skilled would you believe this example of your writing is?"}, {value: 'systemWritingAssessment', text: "In your opinion, how skilled or unskilled do you think the system evaluated you as?"}], isRequired: true } ,
-          { type: "matrix", name: "writingSelfAssessmentComp", title: "Please choose the answers that best reflects your thinking.", columns: [{ value: 1, text: "Much worse"}, { value: 2, text: "Somewhat worse"}, { value: 3, text: "About the same"}, { value: 4, text: "Somewhat better"}, { value: 5, text: "Much better"}], rows: [{value: 'writingQualitySelfAssessmentComparison', text: "Did the system grade you better or worse than you were expecting?"}, {value: 'systemWritingAssessment', text: "In your opinion, how skilled or unskilled do you think the system evaluated you as?"}], isRequired: true } 
-
-          ]},
-
-          { name: "page7", questions: [
-                  { type: "comment", name: "generalPostSystemWritingChange", title: "Did the system's evaluation affect how you think of your writing skills in general? Why or why not?", isRequired: true }, // up for grabs (reevaluate feedback from question)
-                  { type: "matrix", name: "formalWritingEffectivenessPost", title: "Please choose the answers that best reflect your thinking.", columns: [{ value: 1, text: "Much worse"}, { value: 2, text: "Somewhat worse"}, { value: 3, text: "Generally the same"}, { value: 4, text: "Somewhat better"}, { value: 5, text: "Much better"}], rows: [{value: 'comparisonWritingScorePost', text: "How do you think your general writing skills compare to people with the same amount of education?"}, {value: 'formalWritingScore', text: "How do you think your formal writing skills compare to people with the same amount of education?"}], isRequired: true },
-                ]}, 
-            
-                { name: "page8", questions: [
-                  { type: "matrix", name: "systemAccuracyAssessment", title: "Please choose the answers that best reflect your thinking.", columns: [{ value: 1, text: "Very inaccurate"}, { value: 2, text: "Mostly inaccurate"}, { value: 3, text: "Somewhat accurate"}, { value: 4, text: "Rather accurate"}, { value: 5, text: "Very accurate"}], rows: [{value: 'systemSelfAsses', text: "How accurate do you think the system is at assessing your writing?"},], isRequired: true },
-                      { type: "comment", name: "systemAccuracyFreeResponse", title: "Why?  Please list at least two factors that contributed to your assessment?", isRequired: true }, // up for grabs (reevaluate feedback from question)
-                    ]},
-                    { name: "page9", questions: [
-                      { type: "matrix", name: "systemTrustAssessment", title: "Please choose the answers that best reflect your thinking.", columns: [{ value: 1, text: "Very untrustworthy"}, { value: 2, text: "Somewhat untrustworthy"}, { value: 3, text: "Somewhat trusthworthy"}, { value: 4, text: "Rather trustworthy"}, { value: 5, text: "Very trustworthy"}], rows: [{value: 'systemSelfAsses', text: "In your opinion, how trustworthy is the system’s ability to grade your writing accurately?"},], isRequired: true },
-                          { type: "comment", name: "howDoesSystemWork", title: "How do you think the system works?", isRequired: false }, // up for grabs (reevaluate feedback from question)
-                        ]},
+    ]},
+    { name: "page6", questions: [
+      {type: "html", name: "finalAssessmentStatement", title:"experience", html:'<div><center><h4> Based on the writing sample provided, the system has determined that your writing is equivalent to someone who has had </h4><h2 id="finalNewValScore"> </h2> <h4> years of formal education.</h4></center></div>', isRequired: true },
+      {type: "radiogroup", name: "writingSelfAssessment", title: "Compared to how you write normally, how skilled or unskilled would you believe this example of your writing is?",  choices:[{value: 1, text: "Very Unskilled"},{value: 2, text: "Unskilled"},{value: 3, text: "Slightly Unskilled"},{value: 4, text: "Neither Skilled Nor Unskilled"},{value: 5, text: "Slightly Skilled"},{value: 6, text: "Skilled"},{value: 7, text: "Very Skilled"}],isRequired: true},
+      {type: "radiogroup", name: "writingSelfAssessmentComp", title: "Did the system grade you better or worse than you were expecting?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
+    ]}, 
+    { name: "page7", questions: [
+      { type: "comment", name: "generalPostSystemWritingChange", title: "Did the system's evaluation affect how you think of your writing skills in general? Why or why not?", isRequired: true },
+      {type: "radiogroup", name: "postComparisonWritingScore", title: "How do you think your general writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
+      {type: "radiogroup", name: "postComparisonFormalWritingScore", title: "How do you think your formal writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
+    ]},
+    { name: "page8", questions: [
+      {type: "radiogroup", name: "systemAccuracyAssessment", title: "How accurate or innacurate do you think the system is at assessing your writing?", choices:[{value: 1, text: "Very Inaccurate"},{value: 2, text: "Inaccurate"},{value: 3, text: "Slightly Inaccurate"},{value: 4, text: "Neither Innacurate Nor Innacruate"},{value: 5, text: "Slightly Accurate"},{value: 6, text: "Accurate"},{value: 7, text: "Very Accurate"}],isRequired: true},
+      { type: "comment", name: "systemAccuracyFreeResponse", title: "Why?  Please list at least two factors that contributed to your assessment.", isRequired: true },
+    ]},
+    { name: "page9", questions: [
+      {type: "radiogroup", name: "systemTrustAssessment", title: "In your opinion, how trustworthy or untrustworthy is the system’s ability to grade your writing accurately?", choices:[{value: 1, text: "Very Untrustworthy"},{value: 2, text: "Untrustworthy"},{value: 3, text: "Slightly Untrustworthy"},{value: 4, text: "Neither Trustworthy Nor Untrustworthy"},{value: 5, text: "Slightly Trustworthy"},{value: 6, text: "Trustworthy"},{value: 7, text: "Very Trustworthy"}],isRequired: true},
+      { type: "comment", name: "howDoesSystemWork", title: "How do you think the system works?", isRequired: false }, // up for grabs (reevaluate feedback from question)
+    ]},
+    { name:"page10", questions: [ 
+      { type: "html", name: "finalCode", title:"finalCode", html:'<div id="finalCode"><center><h4>You have completed the survey.  Please copy and paste this code into Amazon Turk to receive credit: ' + confirmationCode + '</h4>', isRequired: true }
+    ]},
      ]
 };
 
