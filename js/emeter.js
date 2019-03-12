@@ -41,7 +41,7 @@ var surveyJSON = { title: "",
         { type: "html", name: "writingPrompt", title:"experience", html:'<div id="writingPrompt"><center><h5>Instructions: You are applying for a high-paying job as a seasonal girl scout cookie taste tester.  The qualifications for the job include excellent communication skills, good work ethic, and dedication to the craft.  Please write a formal email to a hiring manager of this company and explain why you are most qualified for this position. </h5></center><center><span id="wordcount">0/100 words</span></center><div id="text" contenteditable class="textarea form-control"></div></div>', isRequired: true }
     ]},
     { name: "page6", questions: [
-      {type: "html", name: "finalAssessmentStatement", title:"experience", html:'<div><center><h4> Based on the writing sample provided, the system has determined that your writing is equivalent to someone who has had </h4><h2 id="finalNewValScore"> </h2> <h4> years of formal education.</h4><h4>You said that you had ' + providedAmountOfEducation + '</h4></center></div>', isRequired: true },
+      {type: "html", name: "finalAssessmentStatement", title:"experience", html:'<div><center><h4 id="finalNewValScore"></h4><h4 id="providedAmountOfEducation"></h4><h3 id="differenceInYears"></h3></center></div>', isRequired: true },
       {type: "radiogroup", name: "writingSelfAssessment", title: "Compared to how you write normally, how skilled or unskilled would you believe this example of your writing is?",  choices:[{value: 1, text: "Very Unskilled"},{value: 2, text: "Unskilled"},{value: 3, text: "Slightly Unskilled"},{value: 4, text: "Neither Skilled Nor Unskilled"},{value: 5, text: "Slightly Skilled"},{value: 6, text: "Skilled"},{value: 7, text: "Very Skilled"}],isRequired: true},
       {type: "radiogroup", name: "writingSelfAssessmentComp", title: "Did the system grade you better or worse than you were expecting?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
     ]}, 
@@ -91,8 +91,15 @@ survey.onCurrentPageChanged.add(function (sender, options) {
     //$('#expquestion').replaceWith(experienceNode);
   } else if(survey.currentPage.visibleIndex == 5) {
     document.querySelector('#textAndMeter').style.display = 'none';
-    $("#finalNewValScore").text(newVal.toFixed(2));
-    $("#providedAmountOfEducation").text(actualAmountOfEducation);
+    $("#finalNewValScore").text("Based on the writing sample provided, the system has determined that your writing is equivalent to someone who has had " + newVal.toFixed(2) + " years of formal education.");
+    $("#providedAmountOfEducation").text("You reported that you had " + survey.getValue("actualAmountOfEducation") + " years of formal education.");
+    yearDifference = (newVal-survey.getValue("actualAmountOfEducation")).toFixed(2);
+    if(yearDifference < 0){
+      $("#differenceInYears").text("The eWriter determined you were writing at " + Math.abs(yearDifference) + " years under your level of education.")
+    }
+    else{
+      $("#differenceInYears").text("This is a difference of " + Math.abs(yearDifference) + " years.")
+    }
     console.log(actualAmountOfEducation);
   } else{
     document.querySelector('#textAndMeter').style.display = 'none';
