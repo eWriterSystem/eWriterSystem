@@ -14,6 +14,7 @@ var tlxDescriptions = {
 	'Do NOT click this option to show you are actually performing the task': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet nisi a lacus porta fringilla. Mauris luctus eu leo in laoreet. Donec scelerisque finibus scelerisque. Vestibulum iaculis justo non erat tristique ultrices.'
 };
 var emeterHTMLS = {};
+var providedAmountOfEducation = 0;
 var emeterValues = {'emeter1': 66.66, 'emeter2': 66.66};
 
 
@@ -22,7 +23,7 @@ var surveyJSON = { title: "",
   showProgressBar: 'bottom',
   pages: [
     { name: "page1", questions: [
-      {type: "radiogroup", name: "communicationEffectiveness", title: "How effective do you believe you are at communicating?", choices:[{value: 1, text: "Very Ineffective"},{value: 2, text: "Ineffective"},{value: 3, text: "Slightly Ineffective"},{value: 4, text: "Neither Innefective Nor Effective"},{value: 5, text: "Slightly Effective"},{value: 6, text: "Effective"},{value: 7, text: "Very Effective"}],isRequired: true},
+      {type: "radiogroup", name: "communicationEffectiveness", title: "How effective do you believe you are at communicating?", choices:[{value: 1, text: "Very Ineffective"},{value: 2, text: "Ineffective"},{value: 3, text: "Slightly Ineffective"},{value: 4, text: "Neither Inneffective Nor Effective"},{value: 5, text: "Slightly Effective"},{value: 6, text: "Effective"},{value: 7, text: "Very Effective"}],isRequired: true},
     ]},
     { name: "page2", questions: [
       {type: "radiogroup", name: "generalWritingSelfAssessment", title: "How skilled or unskilled do you believe you are at writing?", choices:[{value: 1, text: "Very Unskilled"},{value: 2, text: "Unskilled"},{value: 3, text: "Slightly Unskilled"},{value: 4, text: "Neither Skilled Nor Unskilled"},{value: 5, text: "Slightly Skilled"},{value: 6, text: "Skilled"},{value: 7, text: "Very Skilled"}],isRequired: true},
@@ -40,7 +41,7 @@ var surveyJSON = { title: "",
         { type: "html", name: "writingPrompt", title:"experience", html:'<div id="writingPrompt"><center><h5>Instructions: You are applying for a high-paying job as a seasonal girl scout cookie taste tester.  The qualifications for the job include excellent communication skills, good work ethic, and dedication to the craft.  Please write a formal email to a hiring manager of this company and explain why you are most qualified for this position. </h5></center><center><span id="wordcount">0/100 words</span></center><div id="text" contenteditable class="textarea form-control"></div></div>', isRequired: true }
     ]},
     { name: "page6", questions: [
-      {type: "html", name: "finalAssessmentStatement", title:"experience", html:'<div><center><h4> Based on the writing sample provided, the system has determined that your writing is equivalent to someone who has had </h4><h2 id="finalNewValScore"> </h2> <h4> years of formal education.</h4></center></div>', isRequired: true },
+      {type: "html", name: "finalAssessmentStatement", title:"experience", html:'<div><center><h4> Based on the writing sample provided, the system has determined that your writing is equivalent to someone who has had </h4><h2 id="finalNewValScore"> </h2> <h4> years of formal education.</h4><h4>You said that you had ' + providedAmountOfEducation + '</h4></center></div>', isRequired: true },
       {type: "radiogroup", name: "writingSelfAssessment", title: "Compared to how you write normally, how skilled or unskilled would you believe this example of your writing is?",  choices:[{value: 1, text: "Very Unskilled"},{value: 2, text: "Unskilled"},{value: 3, text: "Slightly Unskilled"},{value: 4, text: "Neither Skilled Nor Unskilled"},{value: 5, text: "Slightly Skilled"},{value: 6, text: "Skilled"},{value: 7, text: "Very Skilled"}],isRequired: true},
       {type: "radiogroup", name: "writingSelfAssessmentComp", title: "Did the system grade you better or worse than you were expecting?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
     ]}, 
@@ -81,13 +82,18 @@ function sendDataToServer(survey) {
 }
 
 survey.onCurrentPageChanged.add(function (sender, options) {
-  if (survey.currentPage.visibleIndex == 4) {
+  if (survey.currentPage.visibleIndex == 2){
+    actualAmountOfEducation=0;
+  }
+  else if (survey.currentPage.visibleIndex == 4) {
     document.querySelector('#textAndMeter').style.display = '';
     //console.log(experienceNode);
     //$('#expquestion').replaceWith(experienceNode);
   } else if(survey.currentPage.visibleIndex == 5) {
     document.querySelector('#textAndMeter').style.display = 'none';
     $("#finalNewValScore").text(newVal.toFixed(2));
+    $("#providedAmountOfEducation").text(actualAmountOfEducation);
+    console.log(actualAmountOfEducation);
   } else{
     document.querySelector('#textAndMeter').style.display = 'none';
   }
