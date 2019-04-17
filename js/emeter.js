@@ -30,8 +30,8 @@ var surveyJSON = { title: "",
       {type: "radiogroup", name: "formalWritingSelfAssessment", title: "How skilled or unskilled do you believe you are at formal writing in particular?", choices:[{value: 1, text: "Very Unskilled"},{value: 2, text: "Unskilled"},{value: 3, text: "Slightly Unskilled"},{value: 4, text: "Neither Skilled Nor Unskilled"},{value: 5, text: "Slightly Skilled"},{value: 6, text: "Skilled"},{value: 7, text: "Very Skilled"}],isRequired: true},
     ]},  
     { name: "page3", questions: [
+      { type: "html", name: "educationYearsLegend", title:"experience", html:'<div id="educationYears"><center><h5>For reference, <b>not finishing high school</b> denotes about 8 years, <b>finishing high school</b> denotes about 12 years, and <b>finishing college/higher education</b> denotes around 16 years</h5></div>'},
       { type: "comment", name: "actualAmountOfEducation", title: "How many years of formal education have you had?", width: 1, rows: 1, isRequired: true },
-      { type: "html", name: "educationYearsLegend", title:"experience", html:'<div id="educationYears"><center><h5>For reference, <b>not finishing high school</b> denotes about 8 years, <b>finishing high school</b> denotes about 12 years, and <b>finishing college/higher education</b> denotes around 16 years</h5></div>'}
       {type: "radiogroup", name: "comparisonWritingScore", title: "How do you think your general writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
       {type: "radiogroup", name: "comparisonFormalWritingScore", title: "How do you think your formal writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
     ]},  
@@ -39,7 +39,7 @@ var surveyJSON = { title: "",
       {type: "radiogroup", name: "valueAssessmentOfWritingSystem", title: "How valuable do you think a system that assesses your writing skills would be to you?", choices:[{value: 1, text: "Not At All Valuable"},{value: 2, text: "Fairly Valuable"},{value: 3, text: "Somewhat Valuable"},{value: 4, text: "Mostly Valuable"},{value: 5, text: "Highly Valuable"}],isRequired: true},
     ]},
     { name:"page5", questions: [ 
-        { type: "html", name: "writingPrompt", title:"experience", html:'<div id="writingPrompt"><center><h5>The score above displays the grade level of your writing in real time.</h5><h5>Instructions: You are applying for a high-paying job as a seasonal girl scout cookie taste tester.  The qualifications for the job include excellent communication skills, good work ethic, and dedication to the craft.  Please write a formal email to a hiring manager of this company and explain why you are most qualified for this position. </h5></center><center><span id="wordcount">0/100 words</span></center><div id="text" contenteditable class="textarea form-control"></div></div>', isRequired: true }
+        { type: "html", name: "writingPrompt", title:"experience", html:'<div id="writingPrompt"><center><h5>Instructions: You are applying for a high-paying job as a seasonal girl scout cookie taste tester.  The qualifications for the job include excellent communication skills, good work ethic, and dedication to the craft.  Please write a formal email to a hiring manager of this company and explain why you are most qualified for this position. </h5></center><center><span id="wordcount">0/100 words</span></center><div id="text" contenteditable class="textarea form-control"></div></div>', isRequired: true }
     ]},
     { name: "page6", questions: [
       {type: "html", name: "finalAssessmentStatement", title:"experience", html:'<div><center><h4 id="finalNewValScore"></h4><h4 id="providedAmountOfEducation"></h4><h3 id="differenceInYears"></h3></center></div>', isRequired: true },
@@ -189,7 +189,7 @@ $(document).ready(function() {
   if(machineLearningCondition === 'transparent') {
     $('#explanation').text('The graphic above displays the output from an algorithm that assesses the quality of your writing in terms of number of years of formal education.');
   } else {
-    $('#explanation').text('The graphic above displays the output from an algorithm that assesses the quality of your writing as you answer the question below.');
+    $('#explanation').text('The graphic above displays the output from an algorithm that assesses the quality of your writing in terms of number of years of formal education.');
   }
   /*$('#btn-explain').click(function (e) {
     $('#explanation').append('blahblahtext');
