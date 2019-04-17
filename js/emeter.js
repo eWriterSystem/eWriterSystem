@@ -31,14 +31,15 @@ var surveyJSON = { title: "",
     ]},  
     { name: "page3", questions: [
       { type: "comment", name: "actualAmountOfEducation", title: "How many years of formal education have you had?", width: 1, rows: 1, isRequired: true },
+      { type: "html", name: "educationYearsLegend", title:"experience", html:'<div id="educationYears"><center><h5>For reference, <b>not finishing high school</b> denotes about 8 years, <b>finishing high school</b> denotes about 12 years, and <b>finishing college/higher education</b> denotes around 16 years</h5></div>'}
       {type: "radiogroup", name: "comparisonWritingScore", title: "How do you think your general writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
       {type: "radiogroup", name: "comparisonFormalWritingScore", title: "How do you think your formal writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
     ]},  
     { name: "page4", questions: [
-      {type: "radiogroup", name: "valueAssessmentOfWritingSystem", title: "How valuable do you think a system that assesses your writing skills would be to you?", choices:[{value: 1, text: "Not At All Valuable"},{value: 2, text: "A Little Valuable"},{value: 3, text: "Somewhat Valuable"},{value: 4, text: "Mostly Valuable"},{value: 5, text: "Highly Valuable"}],isRequired: true},
+      {type: "radiogroup", name: "valueAssessmentOfWritingSystem", title: "How valuable do you think a system that assesses your writing skills would be to you?", choices:[{value: 1, text: "Not At All Valuable"},{value: 2, text: "Fairly Valuable"},{value: 3, text: "Somewhat Valuable"},{value: 4, text: "Mostly Valuable"},{value: 5, text: "Highly Valuable"}],isRequired: true},
     ]},
     { name:"page5", questions: [ 
-        { type: "html", name: "writingPrompt", title:"experience", html:'<div id="writingPrompt"><center><h5>Instructions: You are applying for a high-paying job as a seasonal girl scout cookie taste tester.  The qualifications for the job include excellent communication skills, good work ethic, and dedication to the craft.  Please write a formal email to a hiring manager of this company and explain why you are most qualified for this position. </h5></center><center><span id="wordcount">0/100 words</span></center><div id="text" contenteditable class="textarea form-control"></div></div>', isRequired: true }
+        { type: "html", name: "writingPrompt", title:"experience", html:'<div id="writingPrompt"><center><h5>The score above displays the grade level of your writing in real time.</h5><h5>Instructions: You are applying for a high-paying job as a seasonal girl scout cookie taste tester.  The qualifications for the job include excellent communication skills, good work ethic, and dedication to the craft.  Please write a formal email to a hiring manager of this company and explain why you are most qualified for this position. </h5></center><center><span id="wordcount">0/100 words</span></center><div id="text" contenteditable class="textarea form-control"></div></div>', isRequired: true }
     ]},
     { name: "page6", questions: [
       {type: "html", name: "finalAssessmentStatement", title:"experience", html:'<div><center><h4 id="finalNewValScore"></h4><h4 id="providedAmountOfEducation"></h4><h3 id="differenceInYears"></h3></center></div>', isRequired: true },
@@ -50,16 +51,16 @@ var surveyJSON = { title: "",
       {type: "radiogroup", name: "postComparisonFormalWritingScore", title: "How do you think your formal writing skills compare to people with the same amount of education?", choices:[{value: 1, text: "Much Worse"},{value: 2, text: "Worse"},{value: 3, text: "Slightly Worse"},{value: 4, text: "Generally the Same"},{value: 5, text: "Slightly Better"},{value: 6, text: "Better"},{value: 7, text: "Much Better"}],isRequired: true},
     ]},
     { name: "page8", questions: [
-      { type: "comment", name: "generalPostSystemWritingChange", title: "Did the system's evaluation affect how you think of your writing skills in general? Why or why not?", isRequired: true },
+      { type: "comment", name: "generalPostSystemWritingChange", title: "Did the system's evaluation affect how you think of your writing skills in general?  Why or why not?  Please write 2-4 sentences.", isRequired: true },
     ]},
     { name: "page9", questions: [
       {type: "radiogroup", name: "systemAccuracyAssessment", title: "How accurate or innacurate do you think the system is at assessing your writing?", choices:[{value: 1, text: "Very Inaccurate"},{value: 2, text: "Inaccurate"},{value: 3, text: "Slightly Inaccurate"},{value: 4, text: "Neither Innacurate Nor Innacruate"},{value: 5, text: "Slightly Accurate"},{value: 6, text: "Accurate"},{value: 7, text: "Very Accurate"}],isRequired: true},
-      { type: "comment", name: "systemAccuracyFreeResponse", title: "Why?  Please list at least two factors that contributed to your assessment.", isRequired: true },
+      { type: "comment", name: "systemAccuracyFreeResponse", title: "Why?  Please mention at least two factors that contributed to your assessment.", isRequired: true },
     ]},
     
     { name: "page10", questions: [
       {type: "radiogroup", name: "systemTrustAssessment", title: "In your opinion, how trustworthy or untrustworthy did you find the system?", choices:[{value: 1, text: "Very Untrustworthy"},{value: 2, text: "Untrustworthy"},{value: 3, text: "Slightly Untrustworthy"},{value: 4, text: "Neither Trustworthy Nor Untrustworthy"},{value: 5, text: "Slightly Trustworthy"},{value: 6, text: "Trustworthy"},{value: 7, text: "Very Trustworthy"}],isRequired: true},
-      { type: "comment", name: "howDoesSystemWork", title: "How do you think the system works?", isRequired: false }, // up for grabs (reevaluate feedback from question)
+      { type: "comment", name: "howDoesSystemWork", title: "How do you think the system works?", isRequired: true }, // up for grabs (reevaluate feedback from question)
     ]},
     { name:"page11", questions: [ 
       { type: "html", name: "finalCode", title:"finalCode", html:'<div id="finalCode"><center><h4>You are about to complete the survey.  Please copy and paste this code into Amazon Turk to receive credit: ' + confirmationCode + '</h4>', isRequired: true }
